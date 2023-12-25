@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Builder;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Posts {
 
@@ -16,6 +18,10 @@ public class Posts {
     private String title;
 
     private String content;
+
+    private LocalDateTime createdDatetime;
+
+    private LocalDateTime modifiedDatetime;
 
     @Builder
     public Posts(String title, String content) {
