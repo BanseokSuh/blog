@@ -1,35 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-   const [postsTest, setPostsTest] = useState('');
-   const [usersTest, setUsersTest] = useState('');
+import About from "./pages/About";
+import Home from "./pages/Home";
 
-    useEffect(() => {
-        axios.get('/api/v1/posts/test')
-        .then(response => {
-            console.log(response)
-            setPostsTest(response.data)
-        })
-        .catch(error => console.log(error))
-    }, []);
-
-    useEffect(() => {
-            axios.get('/api/v1/users/test')
-            .then(response => {
-                console.log(response)
-                setUsersTest(response.data)
-            })
-            .catch(error => console.log(error))
-        }, []);
-
-    return (
-        <div>
-            Posts from backend : {postsTest}
-            <br />
-            Users from backend : {usersTest}
-        </div>
-    );
-}
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
