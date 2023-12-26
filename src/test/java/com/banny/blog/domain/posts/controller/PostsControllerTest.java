@@ -40,6 +40,7 @@ class PostsControllerTest {
 
     @Test
     public void testing_posts_문자열이_리턴된다() throws Exception {
+        // given
         String txt = "testing posts";
 
         // expected
