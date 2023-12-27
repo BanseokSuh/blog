@@ -1,10 +1,9 @@
 package com.banny.blog.domain.posts.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -15,13 +14,22 @@ public class Posts {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO
     private Long id;
 
+    @Column(length = 100, nullable = false)
     private String title;
 
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    private LocalDateTime createdDatetime;
+    @Column(columnDefinition = "integer default 0")
+    private int viewCount;
 
-    private LocalDateTime modifiedDatetime;
+    @CreatedDate
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime modifiedDate;
 
     @Builder
     public Posts(String title, String content) {
