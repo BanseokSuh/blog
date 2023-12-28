@@ -23,6 +23,8 @@ public class Posts {
     @Column(columnDefinition = "integer default 0")
     private int viewCount;
 
+    private Boolean deleted = Boolean.FALSE;
+
     @CreatedDate
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdDate;
@@ -31,10 +33,10 @@ public class Posts {
     @Column(nullable = false)
     private LocalDateTime modifiedDate;
 
+
     @Builder
     public Posts(String title, String content) {
         this.title = title;
         this.content = content;
     }
-
 }

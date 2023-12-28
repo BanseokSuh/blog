@@ -1,10 +1,8 @@
 package com.banny.blog.domain.users.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Builder;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -15,26 +13,33 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50)
     private String email;
 
+    @Column(length = 50)
     private String name;
 
+    @Column(length = 50)
     private String password;
+
+    @Column(length = 20)
+    private String mobile;
 
     private String address;
 
     private String postcode;
 
-    private LocalDateTime createdDatetime;
+    @CreatedDate
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdDate;
 
-    private LocalDateTime modifiedDatetime;
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime modifiedDate;
 
-    @Builder
-    public Users(String email, String name, String password, String address, String postcode) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.address = address;
-        this.postcode = postcode;
-    }
+
+    /**
+     * builder 생성자
+     */
+
 }
