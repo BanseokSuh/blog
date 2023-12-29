@@ -1,14 +1,13 @@
-package com.banny.blog.domain.posts.domain;
+package com.banny.blog.domain.post.domain;
 
+import com.banny.blog.global.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.Getter;
 
-import java.time.LocalDateTime;
-
+@Getter
 @Entity
-public class Posts {
+public class Post extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO
@@ -25,17 +24,9 @@ public class Posts {
 
     private Boolean deleted = Boolean.FALSE;
 
-    @CreatedDate
-    @Column(updatable = false, nullable = false)
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedDate;
-
 
     @Builder
-    public Posts(String title, String content) {
+    public Post(String title, String content) {
         this.title = title;
         this.content = content;
     }
