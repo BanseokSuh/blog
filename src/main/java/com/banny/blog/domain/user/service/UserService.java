@@ -1,9 +1,9 @@
-package com.banny.blog.domain.users.service;
+package com.banny.blog.domain.user.service;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsersService {
+public class UserService {
 
     public String test() {
         return "testing users";
