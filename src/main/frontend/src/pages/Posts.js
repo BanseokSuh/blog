@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const Posts = () => {
   const [postsList, setPostsList] = useState("");
 
+  // api 요청
   useEffect(() => {
     axios
       .get("/api/v1/post")
