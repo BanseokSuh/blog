@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 
 @SpringBootApplication(exclude = {
-		DataSourceAutoConfiguration.class, // 서버 구동 시 DB 설정값 없이 구동되게 처리
+//		DataSourceAutoConfiguration.class, // 서버 구동 시 DB 설정값 없이 구동되게 처리
 //		SecurityAutoConfiguration.class // 서버 구동 시 Spring Security 로그인 없이 구동되게 처리
 })
 public class BlogApplication {

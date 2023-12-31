@@ -22,16 +22,19 @@ repositories {
 }
 
 dependencies {
+	//	DB
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
+
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	testImplementation 'org.springframework.security:spring-security-test'
 	annotationProcessor 'org.projectlombok:lombok'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
 }
 
 test {
