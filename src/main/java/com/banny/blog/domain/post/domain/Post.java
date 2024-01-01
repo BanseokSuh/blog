@@ -4,8 +4,10 @@ import com.banny.blog.global.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @Entity
 public class Post extends BaseEntity {
 
