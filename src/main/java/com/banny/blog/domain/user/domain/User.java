@@ -2,7 +2,11 @@ package com.banny.blog.domain.user.domain;
 
 import com.banny.blog.global.entities.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 @Entity
 public class User extends BaseEntity {
 

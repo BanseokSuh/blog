@@ -2,11 +2,13 @@ package com.banny.blog.domain.post.dto.response;
 
 import com.banny.blog.domain.post.domain.Post;
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 public class PostResponse {
-    private final Long id;
-    private final String title;
-    private final String content;
+    private Long id;
+    private String title;
+    private String content;
 
     public PostResponse(Post posts) {
         this.id = posts.getId();

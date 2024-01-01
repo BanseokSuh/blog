@@ -1,10 +1,13 @@
 package com.banny.blog.domain.post.controller;
 
+import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RequestMapping("/api/v1/post")
 @RequiredArgsConstructor
@@ -27,7 +30,7 @@ public class PostController {
      */
 
     @GetMapping()
-    private String getList() {
+    private List<PostResponse> getList() {
         return postService.getList();
     }
 
