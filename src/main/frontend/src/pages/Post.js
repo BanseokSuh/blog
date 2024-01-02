@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 
-const Posts = () => {
+const Post = () => {
   const [postList, setPostList] = useState("");
 
   // api 요청
@@ -21,10 +21,9 @@ const Posts = () => {
       <h1>글 목록</h1>
       <p>
         {JSON.stringify(postList)}
-        {/* {postList.map((post) => console.log(post))} */}
       </p>
     </div>
   );
 };
 
-export default Posts;
+export default Post;

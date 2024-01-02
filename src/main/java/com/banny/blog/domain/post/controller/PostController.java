@@ -1,11 +1,10 @@
 package com.banny.blog.domain.post.controller;
 
+import com.banny.blog.domain.post.dto.request.PostSaveRequest;
 import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +31,11 @@ public class PostController {
     @GetMapping()
     private List<PostResponse> getList() {
         return postService.getList();
+    }
+
+    @PostMapping()
+    private Long save(@RequestBody PostSaveRequest postSaveRequest) {
+        return postService.save(postSaveRequest);
     }
 
 
