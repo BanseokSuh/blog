@@ -22,7 +22,7 @@ public class PostService {
     }
 
     /**
-     * 목록 조회
+     * 글 목록 조회
      * @return
      */
     @Transactional(readOnly = true)
@@ -36,13 +36,10 @@ public class PostService {
 
 
     /**
-     * 등록
+     * 글 등록
      * @return
      */
     public Long save(@RequestBody PostSaveRequest postSaveRequest) {
-//        Long insertid = postRepository.save();
-        Long insertId = 1L;
-
-        return insertId;
+        return postRepository.save(postSaveRequest.toEntity()).getId();
     }
 }
