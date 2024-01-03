@@ -19,9 +19,7 @@ const Post = () => {
   return (
     <div>
       <h1>글 목록</h1>
-      <p>
-        {JSON.stringify(postList)}
-      </p>
+      <p>{JSON.stringify(postList)}</p>
     </div>
   );
 };
