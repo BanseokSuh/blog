@@ -18,7 +18,7 @@ public class PostService {
     private final PostRepository postRepository;
 
     public String test() {
-        return "testing users";
+        return "testing post";
     }
 
     /**
@@ -27,8 +27,6 @@ public class PostService {
      */
     @Transactional(readOnly = true)
     public List<PostResponse> getList() {
-
-        System.out.println("======= = getList");
         return postRepository.getList().stream()
                 .map(PostResponse::new)
                 .collect(Collectors.toList());
