@@ -1,20 +1,26 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Post from "./pages/Post";
+import styled from "styled-components";
+import Header from "./Layout/Header";
+import Navigation from "./Layout/Navigation";
+import { Reset } from "styled-reset";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/post" element={<Post />} />
-      </Routes>
-    </BrowserRouter>
+    <Layout>
+      <Reset />
+      <Header />
+      <Navigation />
+    </Layout>
   );
 };
+
+const Layout = styled.div`
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+
+  border: 1px dotted red;
+`;
 
 export default App;
