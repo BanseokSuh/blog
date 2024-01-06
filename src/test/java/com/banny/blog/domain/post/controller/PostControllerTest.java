@@ -1,8 +1,10 @@
 package com.banny.blog.domain.post.controller;
 
 import com.banny.blog.domain.post.domain.Post;
+import com.banny.blog.domain.post.dto.request.PostSaveRequest;
 import com.banny.blog.domain.post.repository.PostRepository;
-import org.junit.jupiter.api.BeforeEach;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +18,27 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT) // TODO
 @AutoConfigureMockMvc // TODO
 class PostControllerTest {
 
+    /**
+     * [x] MockMvc
+     * - Spring MVC Test framework
+     * - It performs full Spring MVC request
+     */
     @Autowired
-    private MockMvc mockMvc; // TODO
+    private MockMvc mockMvc;
 
     @Autowired
     private TestRestTemplate restTemplate; // TODO
@@ -35,10 +46,13 @@ class PostControllerTest {
     @Autowired
     private PostRepository postRepository;
 
-    @BeforeEach
-    void clean() {
-        postRepository.deleteAll();
-    }
+    @Autowired
+    private ObjectMapper objectMapper;
+
+//    @AfterEach
+//    void clean() {
+//        postRepository.deleteAll();
+//    }
 
 
     @Test
@@ -87,5 +101,31 @@ class PostControllerTest {
                 .andExpect(jsonPath("$.length()").value(19))
                 .andExpect(jsonPath("$[0].title").value("반삭이 제목 19"))
                 .andExpect(jsonPath("$[0].content").value("낙성대 19"));
+    }
+
+    @Test
+    @DisplayName("글이 저장된다.")
+    public void test4() throws Exception {
+        // given
+        PostSaveRequest postSaveRequest = PostSaveRequest.builder()
+                .title("글 저장 테스트 타이틀입니다.")
+                .content("글 저장 테스트 컨텐츠입니다. 오늘 날씨는 너무 좋습니다.")
+                .build();
+
+        String json = objectMapper.writeValueAsString(postSaveRequest);
+
+        // when
+        mockMvc.perform(post("/api/v1/post")
+                        .contentType(APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        // then
+        assertEquals(1L, postRepository.count());
+
+        Post post = postRepository.findAll().get(0);
+        assertEquals("글 저장 테스트 타이틀입니다.", post.getTitle());
+        assertEquals("글 저장 테스트 컨텐츠입니다. 오늘 날씨는 너무 좋습니다.", post.getContent());
     }
 }

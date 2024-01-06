@@ -35,6 +35,7 @@ public class PostService {
 
     /**
      * 글 등록
+     * @param postSaveRequest
      * @return
      */
     public Long save(@RequestBody PostSaveRequest postSaveRequest) {
