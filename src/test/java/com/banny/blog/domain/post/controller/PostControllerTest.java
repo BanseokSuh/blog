@@ -49,7 +49,7 @@ class PostControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-//    @AfterEach
+    @AfterEach
 //    void clean() {
 //        postRepository.deleteAll();
 //    }
@@ -103,9 +103,32 @@ class PostControllerTest {
                 .andExpect(jsonPath("$[0].content").value("낙성대 19"));
     }
 
+
+    @Test
+    @DisplayName("글 하나가 조회된다.")
+    public void test4() throws Exception {
+        // given
+        PostSaveRequest postSaveRequest = PostSaveRequest.builder()
+                .title("글_조회_타이틀")
+                .content("글_조회_컨텐츠")
+                .build();
+
+        Long postId = postRepository.save(postSaveRequest.toEntity()).getId();
+
+        // expected
+        mockMvc.perform(get("/api/v1/post/{postId}", postId)
+                        .contentType(APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(postId))
+                .andExpect(jsonPath("$.title").value(postSaveRequest.getTitle()))
+                .andExpect(jsonPath("$.content").value(postSaveRequest.getContent()))
+                .andDo(print());
+    }
+
+
     @Test
     @DisplayName("글이 저장된다.")
-    public void test4() throws Exception {
+    public void test5() throws Exception {
         // given
         PostSaveRequest postSaveRequest = PostSaveRequest.builder()
                 .title("글 저장 테스트 타이틀입니다.")
