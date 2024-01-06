@@ -28,11 +28,22 @@ public class PostController {
      * 삭제 - DELETE  /posts/{postsId}
      */
 
+
+    /**
+     * 글 목록 조회
+     * @return
+     */
     @GetMapping()
     private List<PostResponse> getList() {
         return postService.getList();
     }
 
+
+    /**
+     * 글 등록
+     * @param postSaveRequest
+     * @return
+     */
     @PostMapping()
     private Long save(@RequestBody PostSaveRequest postSaveRequest) {
         return postService.save(postSaveRequest);
