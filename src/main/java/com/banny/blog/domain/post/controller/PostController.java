@@ -21,21 +21,22 @@ public class PostController {
     }
 
     /**
-     * 목록 조회 - GET  /posts
-     * 개별 조회 - GET  /posts/{postsId}
-     * 등록 - POST  /posts
-     * 수정 - PATCH  /posts/{postsId}
-     * 삭제 - DELETE  /posts/{postsId}
-     */
-
-
-    /**
      * 글 목록 조회
      * @return
      */
     @GetMapping()
     private List<PostResponse> getList() {
         return postService.getList();
+    }
+
+    /**
+     * 글 상세 조회
+     * @param postId
+     * @return
+     */
+    @GetMapping("/{postId}")
+    private PostResponse get(@PathVariable(name = "postId") Long postId) {
+        return postService.get(postId);
     }
 
 

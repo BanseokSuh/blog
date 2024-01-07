@@ -1,14 +1,20 @@
-import { Component } from "react";
+// import { Component } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navigation = () => {
   return (
     <Nav>
       <NavList>
-        <NavItem>소개</NavItem>
-        <NavItem>글</NavItem>
-        <NavItem>연락</NavItem>
-        <NavItem>메뉴1</NavItem>
+        <NavItem>
+          <Link to="/">홈</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/post">작성글</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/about">소개</Link>
+        </NavItem>
       </NavList>
     </Nav>
   );
