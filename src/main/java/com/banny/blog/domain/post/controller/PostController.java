@@ -1,5 +1,6 @@
 package com.banny.blog.domain.post.controller;
 
+import com.banny.blog.domain.post.dto.request.PostUpdateRequest;
 import com.banny.blog.domain.post.dto.request.PostSaveRequest;
 import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.service.PostService;
@@ -48,6 +49,11 @@ public class PostController {
     @PostMapping()
     private Long save(@RequestBody PostSaveRequest postSaveRequest) {
         return postService.save(postSaveRequest);
+    }
+
+    @PatchMapping
+    private Long update(@PathVariable Long postId, @RequestBody PostUpdateRequest postUpdateRequest) {
+        return postService.update(postId, postUpdateRequest);
     }
 
 

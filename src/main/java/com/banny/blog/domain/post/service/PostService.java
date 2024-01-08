@@ -1,14 +1,13 @@
 package com.banny.blog.domain.post.service;
 
 import com.banny.blog.domain.post.domain.Post;
+import com.banny.blog.domain.post.dto.request.PostUpdateRequest;
 import com.banny.blog.domain.post.dto.request.PostSaveRequest;
 import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,5 +57,20 @@ public class PostService {
      */
     public Long save(PostSaveRequest postSaveRequest) {
         return postRepository.save(postSaveRequest.toEntity()).getId();
+    }
+
+
+    /**
+     * 글 수정
+     * @param postId
+     * @param postUpdateRequest
+     */
+    public Long update(Long postId, PostUpdateRequest postUpdateRequest) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. postId =" + postId));
+
+        post.update(postUpdateRequest.getTitle(), postUpdateRequest.getContent());
+
+        return postId;
     }
 }
