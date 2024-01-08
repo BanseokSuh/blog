@@ -16,10 +16,16 @@ public class PostController {
 
     private final PostService postService;
 
+
+    /**
+     * test
+     * @return
+     */
     @GetMapping("/test")
     private String test() {
         return postService.test();
     }
+
 
     /**
      * 글 목록 조회
@@ -29,6 +35,7 @@ public class PostController {
     private List<PostResponse> getList() {
         return postService.getList();
     }
+
 
     /**
      * 글 상세 조회
@@ -51,8 +58,17 @@ public class PostController {
         return postService.save(postSaveRequest);
     }
 
-    @PatchMapping
-    private Long update(@PathVariable Long postId, @RequestBody PostUpdateRequest postUpdateRequest) {
+
+    /**
+     * 글 수정
+     * @param postId
+     * @param postUpdateRequest
+     * @return
+     */
+    @PatchMapping("/{postId}")
+    private Long update(@PathVariable(name = "postId") Long postId,
+                        @RequestBody PostUpdateRequest postUpdateRequest) {
+
         return postService.update(postId, postUpdateRequest);
     }
 

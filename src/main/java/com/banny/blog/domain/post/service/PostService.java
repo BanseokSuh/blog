@@ -64,7 +64,9 @@ public class PostService {
      * 글 수정
      * @param postId
      * @param postUpdateRequest
+     * @return
      */
+    @Transactional
     public Long update(Long postId, PostUpdateRequest postUpdateRequest) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. postId =" + postId));
