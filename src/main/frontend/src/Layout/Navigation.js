@@ -7,13 +7,13 @@ const Navigation = () => {
     <Nav>
       <NavList>
         <NavItem>
-          <Link to="/">홈</Link>
+          <Link to="/">Home</Link>
         </NavItem>
         <NavItem>
-          <Link to="/post">작성글</Link>
+          <Link to="/posts">Posts</Link>
         </NavItem>
         <NavItem>
-          <Link to="/about">소개</Link>
+          <Link to="/projects">Projects</Link>
         </NavItem>
       </NavList>
     </Nav>
@@ -27,22 +27,26 @@ const Nav = styled.div`
   height: 30px;
   border-bottom: 1px solid #d1d8e4;
 
+  background-color: orange;
   border: 1px dotted red;
 `;
 
 const NavList = styled.div`
-  width: 1000px;
   display: flex;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 
   border: 1px dotted red;
 `;
 
 const NavItem = styled.div`
-  width: 60px;
-  margin-left: 18px;
-  margin-top: 5px;
   display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  vertical-align: middle;
+  font-size: 1.2rem;
 
   border: 1px dotted red;
 `;
