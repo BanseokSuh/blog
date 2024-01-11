@@ -38,3 +38,45 @@ out/
 
 ### application.properties
 src/main/resources/application.properties
+
+src/main/generated/
+
+### frontend
+src/main/frontend/.DS_STORE
+src/main/frontend/node_modules
+src/main/frontend/scripts/flow/*/.flowconfig
+src/main/frontend/.flowconfig
+src/main/frontend/*~
+src/main/frontend/*.pyc
+src/main/frontend/.grunt
+src/main/frontend/_SpecRunner.html
+src/main/frontend/__benchmarks__
+src/main/frontend/build/
+src/main/frontend/remote-repo/
+src/main/frontend/coverage/
+src/main/frontend/.module-cache
+src/main/frontend/fixtures/dom/public/react-dom.js
+src/main/frontend/fixtures/dom/public/react.js
+src/main/frontend/test/the-files-to-test.generated.js
+src/main/frontend/*.log*
+src/main/frontend/chrome-user-data
+src/main/frontend/*.sublime-project
+src/main/frontend/*.sublime-workspace
+src/main/frontend/.idea
+src/main/frontend/*.iml
+src/main/frontend/.vscode
+src/main/frontend/*.swp
+src/main/frontend/*.swo
+src/main/frontend/
+src/main/frontend/packages/react-devtools-core/dist
+src/main/frontend/packages/react-devtools-extensions/chrome/build
+src/main/frontend/packages/react-devtools-extensions/chrome/*.crx
+src/main/frontend/packages/react-devtools-extensions/chrome/*.pem
+src/main/frontend/packages/react-devtools-extensions/firefox/build
+src/main/frontend/packages/react-devtools-extensions/firefox/*.xpi
+src/main/frontend/packages/react-devtools-extensions/firefox/*.pem
+src/main/frontend/packages/react-devtools-extensions/shared/build
+src/main/frontend/packages/react-devtools-extensions/.tempUserDataDir
+src/main/frontend/packages/react-devtools-inline/dist
+src/main/frontend/packages/react-devtools-shell/dist
+src/main/frontend/packages/react-devtools-timeline/dist

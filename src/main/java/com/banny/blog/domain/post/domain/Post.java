@@ -1,6 +1,6 @@
 package com.banny.blog.domain.post.domain;
 
-import com.banny.blog.global.entities.BaseEntity;
+import com.banny.blog.global.entities.BaseDateEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Post extends BaseEntity {
+public class Post extends BaseDateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO
