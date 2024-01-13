@@ -5,10 +5,11 @@ const Header = () => {
   return (
     <Container>
       {/* <Link to={"/"}> */}
+      <ShortCut>
+        <Link to="/login">로그인/회원가입</Link>
+      </ShortCut>
       <Element>
-        <ShortCut>
-          <Link to="/login">로그인/회원가입</Link>
-        </ShortCut>
+        <Link to="/">Banny's Blog</Link>
       </Element>
       {/* </Link> */}
     </Container>
@@ -18,21 +19,27 @@ const Header = () => {
 export default Header;
 
 const Container = styled.div`
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
 
-  background-color: blue;
+  // background-color: blue;
+  // border: 1px dotted red;
   border: 1px dotted red;
 `;
 
 const Element = styled.div`
   margin: 0 auto;
-  width: 80%;
-  height: 10rem;
+  width: 100%;
+  height: 4rem;
   display: flex;
   flex-flow: row wrap;
+  font-size: 2rem;
+  color: black;
+  padding-top: 1rem;
 
-  background-color: green;
-  border: 1px dotted red;
+  // background-color: green;
+  // border: 1px dotted red;
+  // border-top: 1px dotted red;
 `;
 
 const ShortCut = styled.div`
@@ -40,6 +47,7 @@ const ShortCut = styled.div`
   width: 100%;
   height: 20px;
   text-align: right;
+  padding-top: 1rem;
 
-  border: 1px dotted red;
+  // border: 1px dotted red;
 `;

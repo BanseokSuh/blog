@@ -1,15 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Posts, Login, PostDetail, Projects } from "./index";
+import { Home, PostList, Login, PostListItem, ProjectList } from "./index";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/posts" element={<Posts />} />
-      <Route path="/posts/:postId" element={<PostDetail />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/category/post" element={<PostList />} />
+      <Route path="/category/post/:postId" element={<PostListItem />} />
+      <Route path="/category/project" element={<ProjectList />} />
     </Routes>
   );
 };

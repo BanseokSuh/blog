@@ -15,7 +15,9 @@ const App = () => {
       <Header />
       <Navigation />
       <Content>
-        <Router />
+        <Container>
+          <Router />
+        </Container>
       </Content>
       <Footer />
     </Layout>
@@ -25,17 +27,23 @@ const App = () => {
 const Layout = styled.div`
   margin: 0 auto;
   display: flex;
-  width: 65%;
+  width: 100%;
   flex-flow: row wrap;
-
-  border: 1px solid red;
 `;
 
 const Content = styled.div`
-  width: 90%;
+  width: 100%;
   min-height: 50rem;
   margin: 0 auto;
+  padding: 1rem;
 
+  // border: 1px dotted red;
+  border-top: 1px dotted red;
+  border-bottom: 1px dotted red;
+`;
+
+const Container = styled.div`
+  width: 100%;
   border: 1px dotted red;
 `;
 

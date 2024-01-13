@@ -10,10 +10,10 @@ const Navigation = () => {
           <Link to="/">Home</Link>
         </NavItem>
         <NavItem>
-          <Link to="/posts">Posts</Link>
+          <Link to="/category/post">Post</Link>
         </NavItem>
         <NavItem>
-          <Link to="/projects">Projects</Link>
+          <Link to="/category/project">Project</Link>
         </NavItem>
       </NavList>
     </Nav>
@@ -23,30 +23,35 @@ const Navigation = () => {
 export default Navigation;
 
 const Nav = styled.div`
-  width: 100%;
+  width: 70%;
   height: 30px;
+  margin: 0 auto;
   border-bottom: 1px solid #d1d8e4;
 
-  background-color: orange;
-  border: 1px dotted red;
+  // background-color: orange;
+  // border: 1px dotted red;
+  border-left: 1px dotted red;
+  border-right: 1px dotted red;
 `;
 
 const NavList = styled.div`
   display: flex;
-  width: 100%;
+  width: 30%;
   height: 100%;
-  margin: 0 auto;
+  #margin: 0 auto;
 
-  border: 1px dotted red;
+  // border: 1px dotted red;
 `;
 
 const NavItem = styled.div`
   display: flex;
   width: 100%;
   height: auto;
-  justify-content: space-around;
+  #justify-content: space-around;
+  justify-content: flex-start;
   vertical-align: middle;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
-  border: 1px dotted red;
+  // border: 1px dotted red;
+  border-right: 1px dotted red;
 `;
