@@ -15,5 +15,5 @@ const Container = styled.div`
   height: 8rem;
 
   background-color: grey;
-  border: 1px dotted red;
+  border-bottom: 1px dotted red;
 `;

@@ -80,3 +80,4 @@ src/main/frontend/packages/react-devtools-extensions/.tempUserDataDir
 src/main/frontend/packages/react-devtools-inline/dist
 src/main/frontend/packages/react-devtools-shell/dist
 src/main/frontend/packages/react-devtools-timeline/dist
+src/main/resources/static
