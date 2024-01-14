@@ -21,6 +21,7 @@ const PostListItem = () => {
       <div>번호: {post.id}</div>
       <div>제목: {post.title}</div>
       <div>내용: {post.content}</div>
+      <div>작성일: {post.createdDate}</div>
     </>
   );
 };

@@ -16,11 +16,13 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class) // 자동으로 값 매핑 기능 추가
 public abstract class BaseDateEntity {
 
+    @Getter
     @CreatedDate
     @Column(updatable = false, nullable = false)
     @CreationTimestamp
     private LocalDateTime createdDate;
 
+    @Getter
     @LastModifiedDate
     @Column(nullable = false)
     @CreationTimestamp

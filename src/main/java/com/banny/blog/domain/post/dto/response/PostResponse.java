@@ -4,22 +4,27 @@ import com.banny.blog.domain.post.domain.Post;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 public class PostResponse {
     private Long id;
     private String title;
     private String content;
+    private LocalDateTime createdDate;
 
     public PostResponse(Post posts) {
         this.id = posts.getId();
         this.title = posts.getTitle();
         this.content = posts.getContent();
+        this.createdDate = posts.getCreatedDate();
     }
 
     @Builder
-    public PostResponse(Long id, String title, String content) {
+    public PostResponse(Long id, String title, String content, LocalDateTime createdDate) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.createdDate = createdDate;
     }
 }
