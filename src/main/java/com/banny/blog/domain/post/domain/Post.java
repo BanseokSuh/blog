@@ -42,4 +42,13 @@ public class Post extends BaseDateEntity {
         this.title = title;
         this.content = content;
     }
+
+
+    /**
+     * 삭제
+     */
+    public void delete() {
+        this.deleted = true;
+    }
+
 }

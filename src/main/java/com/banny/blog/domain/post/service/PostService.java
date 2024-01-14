@@ -76,4 +76,21 @@ public class PostService {
 
         return postId;
     }
+
+
+    /**
+     * 글 삭제
+     * @param postId
+     * @return
+     */
+    @Transactional
+    public Long delete(Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. postId =" + postId));
+
+        post.delete();
+
+        return postId;
+    }
+
 }

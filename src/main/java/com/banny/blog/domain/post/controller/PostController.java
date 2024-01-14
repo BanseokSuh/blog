@@ -72,5 +72,16 @@ public class PostController {
         return postService.update(postId, postUpdateRequest);
     }
 
+    /**
+     * 글 삭제
+     * @param postId
+     * @return
+     */
+    @DeleteMapping("/{postId}")
+    private Long delete(@PathVariable(name = "postId") Long postId) {
+        return postService.delete(postId);
+    }
+
+
 
 }
