@@ -22,6 +22,8 @@ const PostList = () => {
           <Link to={`/category/post/${post.id}`}>
             제목: {post.title}
             <br />
+            작성일: {post.createdDate}
+            <br />
             <br />
           </Link>
         </li>

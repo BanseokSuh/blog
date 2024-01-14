@@ -46,7 +46,6 @@ src/main/frontend/.DS_STORE
 src/main/frontend/node_modules
 src/main/frontend/scripts/flow/*/.flowconfig
 src/main/frontend/.flowconfig
-#src/main/frontend/*~
 src/main/frontend/*.pyc
 src/main/frontend/.grunt
 src/main/frontend/_SpecRunner.html
@@ -67,7 +66,6 @@ src/main/frontend/*.iml
 src/main/frontend/.vscode
 src/main/frontend/*.swp
 src/main/frontend/*.swo
-src/main/frontend/
 src/main/frontend/packages/react-devtools-core/dist
 src/main/frontend/packages/react-devtools-extensions/chrome/build
 src/main/frontend/packages/react-devtools-extensions/chrome/*.crx
