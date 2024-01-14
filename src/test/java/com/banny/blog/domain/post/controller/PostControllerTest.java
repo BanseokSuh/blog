@@ -186,4 +186,29 @@ class PostControllerTest {
         assertEquals(expectedTitle, updatedPost.getTitle());
         assertEquals(expectedContent, updatedPost.getContent());
     }
+
+
+    @Test
+    @DisplayName("글이 삭제된다.")
+    public void test7() throws Exception {
+        // given
+        Post post = Post.builder()
+                .title("삭제타이틀_01")
+                .content("삭제컨텐츠_01")
+                .build();
+        postRepository.save(post);
+
+        Long postId = post.getId();
+
+        // when
+        mockMvc.perform(delete("/api/v1/post/{postId}", postId)
+                        .contentType(APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        // then
+        Post deletedPost = postRepository.findById(postId).orElseThrow();
+
+        assertEquals(Boolean.TRUE, deletedPost.getDeleted());
+    }
 }
