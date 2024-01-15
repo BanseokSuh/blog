@@ -10,13 +10,10 @@ import GlobalStyles from "./Styles/GlobalStyles";
 const App = () => {
   return (
     <Layout>
-      {/* 스타일링 리셋 */}
       <Reset />
-      {/* 전역 스타일링 */}
       <GlobalStyles />
       <Header />
       <Navigation />
-
       <Content>
         <Container>
           <Router />
