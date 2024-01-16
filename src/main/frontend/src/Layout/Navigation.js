@@ -15,6 +15,9 @@ const Navigation = () => {
         <NavItem>
           <Link to="/category/project">Project</Link>
         </NavItem>
+        {/* <NavItem>
+          <Link to="/category/resume">Resume</Link>
+        </NavItem> */}
       </NavList>
     </Nav>
   );
@@ -23,35 +26,16 @@ const Navigation = () => {
 export default Navigation;
 
 const Nav = styled.div`
-  width: 70%;
-  height: 30px;
-  margin: 0 auto;
-  border-bottom: 1px solid #d1d8e4;
-
-  // background-color: orange;
-  // border: 1px dotted red;
-  border-left: 1px dotted red;
-  border-right: 1px dotted red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const NavList = styled.div`
   display: flex;
-  width: 30%;
-  height: 100%;
-  #margin: 0 auto;
-
-  // border: 1px dotted red;
 `;
 
 const NavItem = styled.div`
-  display: flex;
-  width: 100%;
-  height: auto;
-  #justify-content: space-around;
-  justify-content: flex-start;
-  vertical-align: middle;
+  margin-right: 3rem;
   font-size: 1.3rem;
-
-  // border: 1px dotted red;
-  border-right: 1px dotted red;
 `;
