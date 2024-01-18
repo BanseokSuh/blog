@@ -1,14 +1,20 @@
-// import styled from "styled-components";
+import styled from "styled-components";
 
 import ExperienceList from "./ExperienceList";
 
 const Experience = () => {
   return (
     <>
-      <div>경력 목록 컴포넌트</div>
+      <Title>Experience</Title>
       <ExperienceList />
     </>
   );
 };
+
+const Title = styled.div`
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+`;
 
 export default Experience;
