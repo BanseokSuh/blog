@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 const PostList = () => {
   const [postList, setPostList] = useState([]);
 
-  const getPostList = async () => {
-    const result = await axios.get("//localhost:8080/api/v1/post");
+  const getPostList = async (postSearchRequest) => {
+    const result = await axios.get("//localhost:8080/api/v1/post", {
+      params: postSearchRequest,
+    });
 
     setPostList(result.data);
   };
 
   useEffect(() => {
-    getPostList(); // 1) 게시글 목록 조회 함수 호출
+    const postSearchRequest = {
+      page: 1,
+      size: 10,
+    };
+    getPostList(postSearchRequest); // 1) 게시글 목록 조회 함수 호출
   }, []);
 
   return (
