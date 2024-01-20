@@ -1,22 +1,29 @@
 // import { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import "../Styles/Navigation.css";
 
 const Navigation = () => {
   return (
     <Nav>
       <NavList>
         <NavItem>
-          <Link to="/">Home</Link>
+          <NavLink to="/" exact activeClassName="active">
+            Home
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/category/post">Post</Link>
+          <NavLink to="/category/post" activeClassName="active">
+            Post
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/category/project">Project</Link>
+          <NavLink to="/category/project" activeClassName="active">
+            Project
+          </NavLink>
         </NavItem>
         {/* <NavItem>
-          <Link to="/category/resume">Resume</Link>
+          <NavLink to="/category/resume">Resume</NavLink>
         </NavItem> */}
       </NavList>
     </Nav>

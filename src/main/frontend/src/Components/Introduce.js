@@ -1,44 +1,47 @@
 import React from "react";
 import styled from "styled-components";
-import photo from "../Assets/images/profile_v2.png";
+import { Container } from "./Brief";
 
 const Introduce = () => {
   return (
     <Container>
-      {/* 사진 영역 */}
-      <Photo>
-        <img src={photo} alt="Profile" />
-      </Photo>
-
-      {/* 개인정보 영역 */}
-      <Information>
-        <div>이름: 서반석</div>
-        <div>이메일: still3028@gmail.com</div>
-        <div>전화번호: 010-3967-3012</div>
-      </Information>
+      <Tag>Introduce</Tag>
+      <Content>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+        <br />
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </Content>
     </Container>
   );
 };
 
-export default Introduce;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-`;
-
-const Photo = styled.div`
+export const Tag = styled.div`
   width: 25%;
-  min-height: 20rem;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  padding: 0 1.5rem;
+  font-size: 2.5rem;
 `;
 
-const Information = styled.div`
+export const Content = styled.div`
   width: 75%;
-  padding: 1.5rem;
+  padding: 0 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
 `;
+
+export default Introduce;
