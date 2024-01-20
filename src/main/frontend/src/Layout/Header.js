@@ -4,36 +4,46 @@ import Navigation from "../Layout/Navigation";
 
 const Header = () => {
   return (
-    <Container>
-      {/* 로그인/회원가입 영역 */}
-      <div>
-        <ShortCut>
-          <Link to="/login">로그인/회원가입</Link>
-        </ShortCut>
-      </div>
+    <ContainerWrap>
+      <Container>
+        {/* 로그인/회원가입 영역 */}
+        <div>
+          <ShortCut>
+            <Link to="/login">로그인/회원가입</Link>
+          </ShortCut>
+        </div>
 
-      {/* 헤더 영역 */}
-      <HeaderContainer>
-        <MainButton>
-          <Link to="/">Banny's Blog</Link>
-        </MainButton>
-        <Navigation />
-      </HeaderContainer>
-    </Container>
+        {/* 헤더 영역 */}
+        <HeaderContainer>
+          <MainButton>
+            <Link to="/">
+              <MainButtonName>Banny's</MainButtonName> Blog
+            </Link>
+          </MainButton>
+          <Navigation />
+        </HeaderContainer>
+      </Container>
+    </ContainerWrap>
   );
 };
 
 export default Header;
 
+const ContainerWrap = styled.div`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px dotted grey;
+  backdrop-filter: blur(10px);
+`;
+
 const Container = styled.div`
   width: 60%;
   margin: 0 auto;
-
-  // border: 1px dotted red;
 `;
 
 const ShortCut = styled.div`
-  height: 2rem;
   text-align: right;
   padding-top: 0.8rem;
   font-size: 14px;
@@ -46,7 +56,11 @@ const HeaderContainer = styled.div`
 
 const MainButton = styled.div`
   width: 30%;
-  height: 3.5rem;
+  height: 3rem;
   font-size: 2rem;
   color: black;
+`;
+
+const MainButtonName = styled.span`
+  font-weight: bold;
 `;
