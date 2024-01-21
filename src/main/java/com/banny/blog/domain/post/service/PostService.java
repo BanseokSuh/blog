@@ -1,11 +1,16 @@
 package com.banny.blog.domain.post.service;
 
 import com.banny.blog.domain.post.domain.Post;
+import com.banny.blog.domain.post.dto.request.PostSearchRequest;
 import com.banny.blog.domain.post.dto.request.PostUpdateRequest;
 import com.banny.blog.domain.post.dto.request.PostSaveRequest;
+import com.banny.blog.domain.post.dto.response.PostPageResponse;
 import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,10 +32,61 @@ public class PostService {
      * @return
      */
     @Transactional(readOnly = true)
-    public List<PostResponse> getList() {
-        return postRepository.getList().stream()
+    public PostPageResponse getList(PostSearchRequest postSearchRequest) {
+
+        // pageable 인스턴스 생성
+        Pageable pageable = createPageableFromRequest(postSearchRequest);
+
+        // 글 목록 조회
+        Page<Post> postPage = postRepository.getList(pageable);
+
+        // 글 목록 조회를 위한 PostResponse 인스턴스 생성
+        List<PostResponse> content = convertPostsToPostResponses(postPage.getContent());
+
+        // 글 목록 조회를 위한 PostPageResponse 인스턴스 생성
+        return buildPostPageResponse(content, postPage, postSearchRequest);
+
+    }
+
+    /**
+     * 글 목록 조회를 위한 pageable 인스턴스 생성
+     * @param postSearchRequest
+     * @return
+     */
+    private Pageable createPageableFromRequest(PostSearchRequest postSearchRequest) {
+        int page = postSearchRequest.getPage();
+        int size = postSearchRequest.getSize();
+
+        return PageRequest.of(page, size);
+    }
+
+    /**
+     * 글 목록 조회를 위한 PostResponse 인스턴스 생성
+     * @param posts
+     * @return
+     */
+    private List<PostResponse> convertPostsToPostResponses(List<Post> posts) {
+        return posts.stream()
                 .map(PostResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 글 목록 조회를 위한 PostPageResponse 인스턴스 생성
+     * @param content
+     * @param postPage
+     * @param postSearchRequest
+     * @return
+     */
+    private PostPageResponse buildPostPageResponse(List<PostResponse> content, Page<Post> postPage, PostSearchRequest postSearchRequest) {
+        return PostPageResponse.builder()
+                .content(content)
+                .pageNo(postSearchRequest.getPage())
+                .pageSize(postSearchRequest.getSize())
+                .totalElements(postPage.getTotalElements())
+                .totalPages(postPage.getTotalPages())
+                .last(postPage.isLast())
+                .build();
     }
 
 

@@ -1,10 +1,13 @@
 package com.banny.blog.domain.post.controller;
 
+import com.banny.blog.domain.post.dto.request.PostSearchRequest;
 import com.banny.blog.domain.post.dto.request.PostUpdateRequest;
 import com.banny.blog.domain.post.dto.request.PostSaveRequest;
+import com.banny.blog.domain.post.dto.response.PostPageResponse;
 import com.banny.blog.domain.post.dto.response.PostResponse;
 import com.banny.blog.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +35,8 @@ public class PostController {
      * @return
      */
     @GetMapping()
-    private List<PostResponse> getList() {
-        return postService.getList();
+    private PostPageResponse getList(@ModelAttribute PostSearchRequest postSearchRequest) {
+        return postService.getList(postSearchRequest);
     }
 
 
