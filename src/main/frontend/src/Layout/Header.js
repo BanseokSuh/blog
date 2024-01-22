@@ -39,7 +39,8 @@ const ContainerWrap = styled.div`
 `;
 
 const Container = styled.div`
-  width: 60%;
+  width: 55%;
+
   margin: 0 auto;
 `;
 
@@ -49,16 +50,14 @@ const ShortCut = styled.div`
   font-size: 14px;
 `;
 
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const HeaderContainer = styled.div``;
 
 const MainButton = styled.div`
-  width: 30%;
+  width: 100%;
   height: 3rem;
   font-size: 2rem;
   color: black;
+  margin-bottom: 1rem;
 `;
 
 const MainButtonName = styled.span`
