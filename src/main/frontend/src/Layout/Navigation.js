@@ -8,20 +8,20 @@ const Navigation = () => {
     <Nav>
       <NavList>
         <NavItem>
-          <NavLink to="/" exact activeClassName="active">
-            Home
+          <NavLink to="/category/about" exact="true" activeclassname="active">
+            About
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/category/post" activeClassName="active">
+          <NavLink to="/category/post" activeclassname="active">
             Post
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to="/category/project" activeClassName="active">
+        {/* <NavItem>
+          <NavLink to="/category/project" activeclassname="active">
             Project
           </NavLink>
-        </NavItem>
+        </NavItem> */}
         {/* <NavItem>
           <NavLink to="/category/resume">Resume</NavLink>
         </NavItem> */}
@@ -35,7 +35,7 @@ export default Navigation;
 const Nav = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  margin-bottom: 0.6rem;
 `;
 
 const NavList = styled.div`
