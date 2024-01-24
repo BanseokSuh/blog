@@ -33,13 +33,11 @@ const Introduce = () => {
 
 export const Tag = styled.div`
   width: 25%;
-  padding: 0 1.5rem;
   font-size: 2.5rem;
 `;
 
 export const Content = styled.div`
   width: 75%;
-  padding: 0 1.5rem;
   font-size: 1.2rem;
   line-height: 1.5;
 `;

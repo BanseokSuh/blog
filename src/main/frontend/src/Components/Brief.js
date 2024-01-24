@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import photo from "../Assets/images/profile_v2.png";
+// import photo from "../Assets/images/profile_v2.png";
 import emailIcon from "../Assets/icons/brief_email.svg";
 import mobileIcon from "../Assets/icons/brief_mobile.png";
 import githubIcon from "../Assets/icons/brief_github.png";
 import linkedinIcon from "../Assets/icons/brief_linkedin.svg";
+import { Tag } from "./Introduce";
 
 const Brief = () => {
   return (
     <Container>
       {/* 사진 영역 */}
-      <Photo>
+      {/* <Photo>
         <img src={photo} alt="Profile" />
-      </Photo>
+      </Photo> */}
+      <Tag>About</Tag>
 
       {/* 개인정보 영역 */}
       <Information>
@@ -31,7 +33,7 @@ const Brief = () => {
         </InfoWrap>
         <InfoWrap>
           <InfoKey>
-            <img src={githubIcon} alt="mobile" />
+            <img src={githubIcon} alt="github" />
           </InfoKey>
           <InfoValue>
             <a
@@ -45,7 +47,7 @@ const Brief = () => {
         </InfoWrap>
         <InfoWrap>
           <InfoKey>
-            <img src={linkedinIcon} alt="email" />
+            <img src={linkedinIcon} alt="linkedin" />
           </InfoKey>
           <InfoValue>
             <a
@@ -68,27 +70,26 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-top: 2rem;
   margin-bottom: 4rem;
 `;
 
-const Photo = styled.div`
-  width: 25%;
-  min-height: 20rem;
-  padding: 0 1.5rem;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
+// const Photo = styled.div`
+//   width: 25%;
+//   min-height: 20rem;
+//   padding: 0 1.5rem;
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// `;
 
 const Information = styled.div`
   width: 75%;
-  padding: 0 1.5rem;
 `;
 
 const Name = styled.div`
-  margin-top: 2rem;
   font-size: 2rem;
   font-weight: bold;
 `;
@@ -109,4 +110,8 @@ const InfoKey = styled.span`
 const InfoValue = styled.span`
   font-size: 1.4rem;
   margin-left: 2rem;
+
+  a {
+    text-decoration: underline;
+  }
 `;

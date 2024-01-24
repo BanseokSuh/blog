@@ -49,7 +49,7 @@ const ExperienceList = () => {
   return (
     <>
       {experienceList.map((experience) => (
-        <Container>
+        <Container key={experience.id}>
           <CompanyInfo>
             <WorkPeriod>{experience.workPeriod}</WorkPeriod>
           </CompanyInfo>
@@ -58,14 +58,14 @@ const ExperienceList = () => {
             <Role>{experience.role}</Role>
             <>
               <Description>
-                {experience.descriptionArr.map((description) => (
-                  <li>{description}</li>
+                {experience.descriptionArr.map((description, idx) => (
+                  <li key={idx}>{description}</li>
                 ))}
                 <li>
                   <SkillSet>Skill Set</SkillSet>
                   <SkillSetArr>
-                    {experience.skillSetArr.map((skillSet) => (
-                      <SkillSetItem>{skillSet}</SkillSetItem>
+                    {experience.skillSetArr.map((skillSet, idx) => (
+                      <SkillSetItem key={idx}>{skillSet}</SkillSetItem>
                     ))}
                   </SkillSetArr>
                 </li>
@@ -89,7 +89,6 @@ const Container = styled.div`
 
 const CompanyInfo = styled.div`
   width: 25%;
-  padding: 0 1.5rem;
   font-size: 2rem;
 `;
 
