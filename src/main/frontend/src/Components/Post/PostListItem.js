@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
+import MarkdownRenderer from "../../Lib/Markdown/MarkdownRenderer";
 // import MarkdownRenderer from "../../Lib/Markdown/MarkdownRenderer";
 // import ReactMarkdown from "react-markdown";
 // import { format } from "date-fns";
@@ -28,8 +29,9 @@ const PostListItem = () => {
         {/* {format(new Date(post.createdDate), "yyyy-MM-dd")} */}
       </PostCreatedDate>
       {/* <MarkdownRenderer>{post.content}</MarkdownRenderer> */}
-      {/* <MarkdownRenderer markdown={post.content} /> */}
-      <PostContent>{post.content}</PostContent>
+      <MarkdownRenderer markdown={post.content} />
+      {/* <PostContent>{post.content}</PostContent> */}
+      {/* <MarkdownRenderer>{post.content}</MarkdownRenderer> */}
       {/* <ReactMarkdown breaks>{post.content}</ReactMarkdown> */}
     </>
   );
@@ -49,7 +51,7 @@ const PostCreatedDate = styled.div`
 
 const PostContent = styled.div`
   margin-top: 5rem;
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
   line-height: 2.2rem;
   white-space: pre-wrap;
 `;
