@@ -42,16 +42,12 @@ const Content = styled.div`
   width: 100%;
   min-height: 50rem;
   margin: 0 auto;
-  padding: 1rem;
-
-  border-top: 1px dotted grey;
 `;
 
 const Container = styled.div`
   width: 55%;
   margin: 0 auto;
   margin-top: 1rem;
-  border: 1px dotted red;
 `;
 
 export default App;
