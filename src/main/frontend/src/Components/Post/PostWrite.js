@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-// import MDEditor from "@uiw/react-md-editor";
+import MDEditor from "@uiw/react-md-editor";
 
 const PostWrite = () => {
   const [title, setTitle] = useState("");
@@ -52,14 +52,9 @@ const PostWrite = () => {
         />
       </div>
       <div>
-        <ContentInput
-          value={content}
-          placeholder="내용을 입력하세요."
-          onChange={(e) => setContent(e.target.value)}
-        />
-        {/* <div data-color-mode="light">
-          <MDEditor height={865} value={content} />
-        </div> */}
+        <div data-color-mode="light">
+          <MDEditor height={700} value={content} onChange={setContent} />
+        </div>
       </div>
       <SubmitButton type="submit">Submit</SubmitButton>
     </Form>
@@ -74,12 +69,6 @@ const Form = styled.form`
 const TitleInput = styled.input`
   width: 100%;
   height: 1.6rem;
-  margin-bottom: 1rem;
-`;
-
-const ContentInput = styled.textarea`
-  width: 100%;
-  min-height: 20rem;
   margin-bottom: 1rem;
 `;
 
