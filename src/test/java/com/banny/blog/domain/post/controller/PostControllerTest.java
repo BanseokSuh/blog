@@ -50,7 +50,7 @@ class PostControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @AfterEach
+//    @AfterEach
 //    void clean() {
 //        postRepository.deleteAll();
 //    }
@@ -84,24 +84,27 @@ class PostControllerTest {
     }
 
     @Test
-    @DisplayName("글 목록이 리턴된다.")
+    @DisplayName("글 목록이 리턴된다. - 페이징")
     public void test3() throws Exception {
         // given
         List<Post> requestPosts = IntStream.range(1, 20)
                 .mapToObj(i -> Post.builder()
                         .title("반삭이 제목 " + i)
-                        .content("낙성대 " + i)
+                        .content("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. " + i)
                         .build())
                 .collect(Collectors.toList());
 
         postRepository.saveAll(requestPosts);
 
         // expected
-        mockMvc.perform(get("/api/v1/post").contentType(APPLICATION_JSON))
+        mockMvc.perform(get("/api/v1/post?page=1&size=10")
+                        .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(19))
+                .andExpect(jsonPath("$.length()").value(10))
                 .andExpect(jsonPath("$[0].title").value("반삭이 제목 19"))
-                .andExpect(jsonPath("$[0].content").value("낙성대 19"));
+                .andExpect(jsonPath("$[0].content").value("낙성대 19"))
+                .andDo(print());
     }
 
 
@@ -111,7 +114,8 @@ class PostControllerTest {
         // given
         PostSaveRequest postSaveRequest = PostSaveRequest.builder()
                 .title("글_조회_타이틀")
-                .content("글_조회_컨텐츠")
+                .content("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
                 .build();
 
         Long postId = postRepository.save(postSaveRequest.toEntity()).getId();
@@ -133,7 +137,8 @@ class PostControllerTest {
         // given
         PostSaveRequest postSaveRequest = PostSaveRequest.builder()
                 .title("글 저장 테스트 타이틀입니다.")
-                .content("글 저장 테스트 컨텐츠입니다. 오늘 날씨는 너무 좋습니다.")
+                .content("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
                 .build();
 
         String json = objectMapper.writeValueAsString(postSaveRequest);
@@ -160,13 +165,15 @@ class PostControllerTest {
         // given
         Post post = Post.builder()
                 .title("수정타이틀_01")
-                .content("수정컨텐츠_01")
+                .content("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
                 .build();
 
         postRepository.save(post); // 게시글 저장
 
         String expectedTitle = "수정타이틀_01_수정";
-        String expectedContent = "수정컨텐츠_01_수정";
+        String expectedContent = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
         PostUpdateRequest updateRequest = PostUpdateRequest.builder()
                 .title(expectedTitle)
@@ -194,7 +201,8 @@ class PostControllerTest {
         // given
         Post post = Post.builder()
                 .title("삭제타이틀_01")
-                .content("삭제컨텐츠_01")
+                .content("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
                 .build();
         postRepository.save(post);
 
@@ -211,4 +219,5 @@ class PostControllerTest {
 
         assertEquals(Boolean.TRUE, deletedPost.getDeleted());
     }
+
 }
