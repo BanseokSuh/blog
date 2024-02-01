@@ -56,7 +56,7 @@ const PostWrite = () => {
           <MDEditor height={700} value={content} onChange={setContent} />
         </div>
       </div>
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit">발행</SubmitButton>
     </Form>
   );
 };
@@ -75,8 +75,7 @@ const TitleInput = styled.input`
 const SubmitButton = styled.button`
   border: none;
   padding: 0.5rem 1rem;
-  background-color: #d94844;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 4px;
