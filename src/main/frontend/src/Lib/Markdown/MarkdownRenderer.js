@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
-const MarkdownRenderer = (markdown) => {
+const MarkdownRenderer = ({ markdown }) => {
   return (
     <MarkdownStyle>
       <ReactMarkdown>{markdown}</ReactMarkdown>
@@ -10,8 +10,9 @@ const MarkdownRenderer = (markdown) => {
 };
 
 const MarkdownStyle = styled.div`
-  font-size: 1.5rem;
-  line-height: 2.2rem;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  white-space: pre-wrap;
 `;
 
 export default MarkdownRenderer;
