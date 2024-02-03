@@ -36,7 +36,7 @@ const PostList = () => {
     <>
       <Link to="/category/post-write">
         <ButtonContainer>
-          <PostWriteButton>Write a Post</PostWriteButton>
+          <PostWriteButton>글 작성하기</PostWriteButton>
         </ButtonContainer>
       </Link>
       {/* 글 목록 영역 */}
