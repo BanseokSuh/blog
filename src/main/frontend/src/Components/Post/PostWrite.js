@@ -43,33 +43,53 @@ const PostWrite = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
+      <TitleInputWrapper>
         <TitleInput
           type="text"
           value={title}
           placeholder="제목을 입력하세요."
           onChange={(e) => setTitle(e.target.value)}
         />
-      </div>
-      <div>
+      </TitleInputWrapper>
+      <MDEditorWrapper>
         <div data-color-mode="light">
           <MDEditor height={700} value={content} onChange={setContent} />
         </div>
-      </div>
-      <SubmitButton type="submit">발행</SubmitButton>
+      </MDEditorWrapper>
+      <ButtonWrapper>
+        <SubmitButton type="submit">발행</SubmitButton>
+      </ButtonWrapper>
     </Form>
   );
 };
 
 const Form = styled.form`
   width: 100%;
-  text-align: right;
+  text-align: center;
+  margin-bottom: 7rem;
+`;
+
+const TitleInputWrapper = styled.div`
+  width: 100%;
+`;
+
+const MDEditorWrapper = styled.div`
+  white-space: pre-wrap;
+  margin-bottom: 3rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 `;
 
 const TitleInput = styled.input`
   width: 100%;
-  height: 1.6rem;
+  height: 3rem;
   margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  font-size: 1.5rem;
 `;
 
 const SubmitButton = styled.button`
