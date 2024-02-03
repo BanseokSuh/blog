@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import MarkdownRenderer from "../../Lib/Markdown/MarkdownRenderer";
-// import MarkdownRenderer from "../../Lib/Markdown/MarkdownRenderer";
-// import ReactMarkdown from "react-markdown";
-// import { format } from "date-fns";
+import { format } from "date-fns";
 
 const PostListItem = () => {
   const { postId } = useParams();
   const [post, setPost] = useState([]);
+  const [time, setTime] = useState(null);
 
   const getPost = async (postId) => {
     const result = await axios.get(`//localhost:8080/api/v1/post/${postId}`);
+    setTime(format(new Date(result.data.createdDate), "yyyy-MM-dd"));
     setPost(result.data);
   };
 
@@ -23,16 +23,10 @@ const PostListItem = () => {
   return (
     <>
       <PostTitle>{post.title}</PostTitle>
-      <PostCreatedDate>
-        {post.createdDate}
-        {/* {format(new Date(post.createdDate), "yyyy.MM.dd hh:mm")} */}
-        {/* {format(new Date(post.createdDate), "yyyy-MM-dd")} */}
-      </PostCreatedDate>
-      {/* <MarkdownRenderer>{post.content}</MarkdownRenderer> */}
-      <MarkdownRenderer markdown={post.content} />
-      {/* <PostContent>{post.content}</PostContent> */}
-      {/* <MarkdownRenderer>{post.content}</MarkdownRenderer> */}
-      {/* <ReactMarkdown breaks>{post.content}</ReactMarkdown> */}
+      <PostCreatedDate>{time}</PostCreatedDate>
+      <PostContent>
+        <MarkdownRenderer markdown={post.content} />
+      </PostContent>
     </>
   );
 };
@@ -50,10 +44,7 @@ const PostCreatedDate = styled.div`
 `;
 
 const PostContent = styled.div`
-  margin-top: 5rem;
-  // font-size: 1.5rem;
-  line-height: 2.2rem;
-  white-space: pre-wrap;
+  margin-top: 3rem;
 `;
 
 export default PostListItem;
