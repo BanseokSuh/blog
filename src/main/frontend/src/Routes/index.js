@@ -1,9 +1,10 @@
 export { default as Main } from "../Components/Main";
 export { default as About } from "../Components/About";
 export { default as Login } from "../Components/Login";
+export { default as Register } from "../Components/Register";
 export { default as Post } from "../Components/Post/Post";
 export { default as PostList } from "../Components/Post/PostList";
 export { default as PostListItem } from "../Components/Post/PostListItem";
-export { default as PostWrite } from "../Components/Post/PostWrite";
+export { default as PostDetail } from "../Components/Post/PostDetail";
 export { default as Project } from "../Components/Project/Project";
 export { default as ProjectList } from "../Components/Project/ProjectList";

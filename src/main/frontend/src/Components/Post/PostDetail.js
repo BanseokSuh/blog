@@ -1,14 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
 
-const PostWrite = () => {
+const PostDetail = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { postId } = useParams();
 
   const navigate = useNavigate();
+
+  const modifyPost = async () => {
+    const result = await axios.put(`//localhost:8080/api/v1/post/${postId}`, {
+      title,
+      content,
+    });
+
+    if (result.status === 200) {
+      alert("게시글이 수정되었습니다.");
+      navigate(`/category/post/${postId}`);
+    }
+  };
+
+  useEffect(() => {
+    const getPost = async () => {
+      if (postId) {
+        try {
+          const response = await axios.get(
+            `//localhost:8080/api/v1/post/${postId}`
+          );
+
+          setTitle(response.data.title);
+          setContent(response.data.content);
+        } catch (error) {
+          console.error("There was an error!", error);
+        }
+      }
+    };
+
+    getPost();
+  }, [postId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,7 +89,15 @@ const PostWrite = () => {
         </div>
       </MDEditorWrapper>
       <ButtonWrapper>
-        <SubmitButton type="submit">발행</SubmitButton>
+        <ButtonWrapper>
+          {postId ? (
+            <ModifyButton type="button" onClick={() => modifyPost()}>
+              수정
+            </ModifyButton>
+          ) : (
+            <SubmitButton type="submit">발행</SubmitButton>
+          )}
+        </ButtonWrapper>
       </ButtonWrapper>
     </Form>
   );
@@ -73,9 +113,19 @@ const TitleInputWrapper = styled.div`
   width: 100%;
 `;
 
+const TitleInput = styled.input`
+  width: 100%;
+  height: 3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  font-size: 1.5rem;
+  padding-left: 0.6rem;
+`;
+
 const MDEditorWrapper = styled.div`
   white-space: pre-wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const ButtonWrapper = styled.div`
@@ -84,21 +134,20 @@ const ButtonWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const TitleInput = styled.input`
-  width: 100%;
-  height: 3rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  font-size: 1.5rem;
-`;
-
 const SubmitButton = styled.button`
   border: none;
   padding: 0.5rem 1rem;
   color: black;
-  font-weight: bold;
   font-size: 1rem;
   border-radius: 4px;
 `;
 
-export default PostWrite;
+const ModifyButton = styled.button`
+  border: none;
+  padding: 0.5rem 1rem;
+  color: black;
+  font-size: 1rem;
+  border-radius: 4px;
+`;
+
+export default PostDetail;
