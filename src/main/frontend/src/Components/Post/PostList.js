@@ -33,12 +33,12 @@ const PostList = () => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <>
-      <Link to="/category/post-write">
-        <ButtonContainer>
-          <PostWriteButton>글 작성하기</PostWriteButton>
-        </ButtonContainer>
-      </Link>
+    <PostListWrapper>
+      <ButtonContainer>
+        <Link to="/category/post/detail">
+          <PostDetailButton>작성</PostDetailButton>
+        </Link>
+      </ButtonContainer>
       {/* 글 목록 영역 */}
       {postList.map((post) => (
         <PostLiElement key={post.id}>
@@ -46,7 +46,7 @@ const PostList = () => {
             <PostTitle>{post.title}</PostTitle>
             <PostContent>{post.content}</PostContent>
             <PostCreatedDate>
-              {format(new Date(post.createdDate), "yyyy-MM-dd")}
+              {format(new Date(post.createdAt), "yyyy-MM-dd")}
             </PostCreatedDate>
             <br />
           </Link>
@@ -64,20 +64,23 @@ const PostList = () => {
           </StyledPagingButton>
         ))}
       </PagingButtonContainer>
-    </>
+    </PostListWrapper>
   );
 };
+
+const PostListWrapper = styled.div``;
 
 const ButtonContainer = styled.div`
   text-align: right;
 `;
 
-const PostWriteButton = styled.button`
-  // display: none;
+const PostDetailButton = styled.button`
+  width: 3.2rem;
+  height: 2.4rem;
   border: none;
   color: black;
-  padding: 0.4rem 1rem;
-  font-size: 12px;
+  font-size: 15px;
+  // font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
 `;
@@ -87,13 +90,14 @@ const PostLiElement = styled.li`
 `;
 
 const PostTitle = styled.div`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  // font-weight: bold;
+  margin-bottom: 0.8rem;
 `;
 
 const PostContent = styled.div`
   color: grey;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   // white-space: pre-wrap;
 `;
 
