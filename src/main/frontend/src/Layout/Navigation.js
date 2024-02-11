@@ -8,6 +8,11 @@ const Navigation = () => {
     <Nav>
       <NavList>
         <NavItem>
+          <NavLink to="/" exact="true" activeclassname="active">
+            Home
+          </NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink to="/category/about" exact="true" activeclassname="active">
             About
           </NavLink>

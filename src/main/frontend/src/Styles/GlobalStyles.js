@@ -23,22 +23,22 @@ const GlobalStyles = createGlobalStyle`
     /* 제목 스타일 */
     h1 {
         font-size: 2em;
-        color: #333;
+        // color: #333;
     }
 
     h2 {
         font-size: 1.5em;
-        color: #555;
+        // color: #555;
     }
 
     h3 {
         font-size: 1.2em;
-        color: #777;
+        // color: #777;
     }
 
     /* 본문 텍스트 스타일 */
     p {
-        margin-bottom: 15px;
+        // margin-bottom: 15px;
     }
 
     a:hover {
@@ -47,12 +47,17 @@ const GlobalStyles = createGlobalStyle`
 
     /* 목록 스타일 */
     ul, ol {
-        // margin-bottom: 15px;
+        padding-left: 20px;
+    }
+    
+    ul > li {
+        list-style-type: disc;
     }
 
-    li {
-        // margin-bottom: 5px;
+    ol > li {
+        list-style-type: decimal;
     }
+
 
     /* 인용문 스타일 */
     blockquote {
@@ -72,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
 
     code {
         font-family: Monaco, monospace;
-        color: #e83e8c;
+        color: #d94844;
     }
 
     /* 표 스타일 */

@@ -47,7 +47,7 @@ const Content = styled.div`
 const Container = styled.div`
   width: 55%;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 `;
 
 export default App;

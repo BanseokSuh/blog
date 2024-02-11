@@ -11,7 +11,7 @@ const MarkdownRenderer = ({ markdown }) => {
 
 const MarkdownStyle = styled.div`
   font-size: 1rem;
-  line-height: 1.6rem;
+  // line-height: 1rem;
   white-space: pre-wrap;
 `;
 
