@@ -21,6 +21,9 @@ const Header = () => {
             </Link>
           </MainButton>
           <Navigation />
+          {/* <StickyNavigation>
+            <Navigation />
+          </StickyNavigation> */}
         </HeaderContainer>
       </Container>
     </ContainerWrap>
@@ -46,11 +49,17 @@ const Container = styled.div`
 
 const ShortCut = styled.div`
   text-align: right;
-  padding-top: 0.8rem;
+  padding: 0.8rem 0;
   font-size: 14px;
 `;
 
 const HeaderContainer = styled.div``;
+
+const StickyNavigation = styled(Navigation)`
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+`;
 
 const MainButton = styled.div`
   width: 100%;
@@ -62,4 +71,5 @@ const MainButton = styled.div`
 
 const MainButtonName = styled.span`
   font-weight: bold;
+  color: #d94844;
 `;
