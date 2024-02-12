@@ -1,6 +1,7 @@
 package com.banny.blog.domain.user.controller;
 
 import com.banny.blog.domain.user.dto.request.UserLoginRequest;
+import com.banny.blog.domain.user.dto.request.UserRegisterRequest;
 import com.banny.blog.domain.user.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +15,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    private String register() {
-        return userService.register();
+    private String register(@RequestBody UserRegisterRequest userRegisterRequest) {
+        return userService.register(userRegisterRequest);
     }
 
     @PostMapping("/login")

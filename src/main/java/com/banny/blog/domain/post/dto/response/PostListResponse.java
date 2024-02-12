@@ -11,20 +11,20 @@ public class PostListResponse {
     private Long id;
     private String title;
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     public PostListResponse(Post posts) {
         this.id = posts.getId();
         this.title = posts.getTitle();
         this.content = posts.getContent();
-        this.createdDate = posts.getCreatedDate();
+        this.createdAt = posts.getCreatedAt();
     }
 
     @Builder
-    public PostListResponse(Long id, String title, String content, LocalDateTime createdDate) {
+    public PostListResponse(Long id, String title, String content, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.content = content.substring(0, Math.min(content.length(), 10));
-        this.createdDate = createdDate;
+        this.createdAt = createdAt;
     }
 }
