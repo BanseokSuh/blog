@@ -17,6 +17,7 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
     @Override
     public Page<Post> getList(Pageable pageable) {
         QueryResults<Post> results = jpaQueryFactory.selectFrom(QPost.post)
+                .where(QPost.post.deleted.eq(Boolean.FALSE))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .orderBy(QPost.post.id.desc())
