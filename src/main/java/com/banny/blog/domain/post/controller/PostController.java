@@ -68,7 +68,7 @@ public class PostController {
      * @param postUpdateRequest
      * @return
      */
-    @PatchMapping("/{postId}")
+    @PutMapping("/{postId}")
     private Long update(@PathVariable(name = "postId") Long postId,
                         @RequestBody PostUpdateRequest postUpdateRequest) {
 

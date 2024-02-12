@@ -102,7 +102,7 @@ public class PostService {
                 .id(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
-                .createdDate(post.getCreatedDate())
+                .createdAt(post.getCreatedAt())
                 .build();
     }
 
