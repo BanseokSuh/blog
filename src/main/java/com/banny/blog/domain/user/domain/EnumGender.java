@@ -1,7 +1,7 @@
 package com.banny.blog.domain.user.domain;
 
 public enum EnumGender {
-    MALE,
-    FEMALE,
+    M,
+    F,
     ETC
 }
