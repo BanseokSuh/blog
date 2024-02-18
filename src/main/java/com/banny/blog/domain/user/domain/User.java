@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 @NoArgsConstructor
@@ -33,6 +34,7 @@ public class User extends BaseEntity {
     @Column(length = 20)
     private String mobile;
 
+    @Enumerated(EnumType.STRING)
     private EnumGender gender;
 
     private String address;
@@ -51,5 +53,4 @@ public class User extends BaseEntity {
         this.address = address;
         this.postcode = postcode;
     }
-
 }
